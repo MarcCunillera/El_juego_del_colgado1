@@ -1,5 +1,6 @@
 package paquete1;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class El_juego_del_colgado {
@@ -7,10 +8,15 @@ public class El_juego_del_colgado {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		// Variables y arrays
 		Scanner sc = new Scanner(System.in);
+		Random random = new Random();
+		
         int cantJugadors;
-
+        int rondas;
+        int[] vides;
+        String[] nomsJugadors;
+        
+        
         // Normas del juego
         System.out.println("--------------------------");
         System.out.println("-  El juego del colgado  -");
@@ -36,6 +42,31 @@ public class El_juego_del_colgado {
             System.out.println("Mínimo 2 jugadores, máximo 5 jugadores.");
             System.out.println("¿Cuántos jugadores son?");
             cantJugadors = sc.nextInt();
+        }
+        
+     // Inicializamos arrays
+        nomsJugadors = new String[cantJugadors];
+        vides = new int[cantJugadors];
+
+        // Pedimos los nombres de los jugadores
+        for (int i = 0; i < nomsJugadors.length; i++) { 
+            System.out.println("Introduce el nombre del jugador " + (i + 1) + ":"); // Ponemos esto para pedir el nombre de un jugador mas 1
+            nomsJugadors[i] = sc.next();
+        }
+
+        // Mostramos los nombres de los jugadores
+        System.out.println("Los jugadores son:"); 
+        for (String jugadorNombre : nomsJugadors) { // Ponemos esto para que despues se printen los nombres por pantalla 
+            System.out.println(jugadorNombre);
+        }
+
+        // Preguntamos cuántas rondas jugar
+        System.out.println("¿Cuántas rondas quieres jugar?");
+        rondas = sc.nextInt();
+
+        // Inicializamos las vidas de los jugadores
+        for (int i = 0; i < vides.length; i++) {  // Cremos un array para almacenar las vidas
+            vides[i] = 6;
         }
 	}
 
