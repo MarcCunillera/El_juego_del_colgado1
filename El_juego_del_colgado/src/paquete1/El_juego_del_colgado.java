@@ -14,6 +14,7 @@ public class El_juego_del_colgado {
         int cantJugadors;
         int rondas;
         int[] vides;
+        String paraulaSecreta;
         String[] nomsJugadors;
         
         
@@ -68,6 +69,36 @@ public class El_juego_del_colgado {
         for (int i = 0; i < vides.length; i++) {  // Cremos un array para almacenar las vidas
             vides[i] = 6;
         }
+        
+     // Jugar las rondas
+     		for (int ronda = 1; ronda <= rondas; ronda++) {  // Bucle para jugar cada ronda
+     		    System.out.println("\n--- Ronda " + ronda + " ---");  // Se imprime el número de ronda que toque 
+
+     		    // El jugador elige la palabra secreta
+     		    System.out.println("Elige la palabra secreta: ");  
+     		    paraulaSecreta = sc.next();  // Se almacena la palabra secreta
+
+     		    // Creamos una representación de la palabra secreta con guiones bajos
+     		    char[] palabraOculta = new char[paraulaSecreta.length()];  // Creamos un array de caracteres con el mismo tamaño de la palabra secreta
+     		    for (int i = 0; i < palabraOculta.length; i++) { 
+     		        palabraOculta[i] = '_';  // Ponemos los guiones para sustituir la palabra
+     		    }
+     		    
+     		    // Iniciamos el juego para esta ronda
+    		    boolean palabraAdivinada = false;  // Variable para verificar si la palabra ha sido adivinada
+    		    int intentosRestantes = 6;  // Inicializamos los intentos restantes (6 intentos por jugador)
+
+    		    // Jugadores hacen sus intentos
+    		    while (!palabraAdivinada && intentosRestantes > 0) {  // Mientras no se haya adivinado la palabra y queden intentos
+    		        // Mostramos la palabra oculta
+    		        System.out.print("Palabra secreta: ");
+    		        for (char letra : palabraOculta) {  // Recorremos la palabra oculta
+    		            System.out.print(letra + " ");  // Imprimimos cada letra (guion bajo o letra adivinada)
+    		        }
+    		        System.out.println();
+    		    }
+    		    
+     		}
 	}
 
 }
