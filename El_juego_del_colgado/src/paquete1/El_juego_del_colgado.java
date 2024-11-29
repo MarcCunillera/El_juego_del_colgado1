@@ -14,6 +14,7 @@ public class El_juego_del_colgado {
         int cantJugadors;
         int rondas;
         int[] vides;
+        int[] victorias = null;
         String paraulaSecreta;
         String[] nomsJugadors;
         
@@ -116,6 +117,29 @@ public class El_juego_del_colgado {
 	                        if (!letraCorrecta) {
 	                            vides[i]--;  // Restamos una vida al jugador
 	                            System.out.println("¡Letra incorrecta! Te quedan " + vides[i] + " vidas."); // Printamos esto por pantalla
+	                        }
+	                        
+	                     // Verificamos si todas las letras de la palabra fueron adivinados
+	                        palabraAdivinada = true;  // Inicializamos como si la uvieramos adivinada
+	                        for (char letraOculta : palabraOculta) {
+	                            if (letraOculta == '_') {  // Mira si hay algún guion bajo y si hay alguno la palabra no está adivinada
+	                                palabraAdivinada = false;  // Marcamos como no adivinada
+	                                break; // Cerramos el bucle
+	                            }
+	                        }
+
+	                        // Si alguien adivina la palabra, terminamos la ronda
+	                        if (palabraAdivinada) {
+	                            victorias[i]++;  // Incrementamos la victoria del jugador que adivinó la palabra
+	                            System.out.println(nomsJugadors[i] + " ha adivinado la palabra!");
+	                            break;  // Terminamos el bucle de jugadores
+	                        }
+
+	                        // Si un jugador se queda sin intentos, le decimos que no adivinó la palabra y terminamos la ronda para ese jugador
+	                        if (vides[i] == 0) {
+	                            System.out.println(nomsJugadors[i] + " no ha adivinado la palabra y ha agotado sus intentos.");
+	                            palabraAdivinada = true;  // Finalizamos la ronda
+	                            break;  // Terminamos el bucle de jugadores
 	                        }
 	                    }
     		    
