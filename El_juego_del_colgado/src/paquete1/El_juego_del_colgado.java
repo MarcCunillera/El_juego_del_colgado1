@@ -96,9 +96,32 @@ public class El_juego_del_colgado {
     		            System.out.print(letra + " ");  // Imprimimos cada letra (guion bajo o letra adivinada)
     		        }
     		        System.out.println();
-    		    }
+    		        
+    		     // Preguntamos a cada jugador por una letra mientras tengas vidas disponibles
+	                for (int i = 0; i < nomsJugadors.length; i++) {
+	                    if (vides[i] > 0) {  // Si el jugador tiene vidas restantes se printea la la frase de avajo
+	                        System.out.println(nomsJugadors[i] + ", te quedan " + vides[i] + " vidas. Adivina una letra: ");
+	                        char letraAdivinada = sc.next().charAt(0);  // almacenamos la letra adivinada 
+
+	                        // Verificamos si la letra está en la palabra secreta
+	                        boolean letraCorrecta = false; // le ponemos falso por si la letra no es correcta
+	                        for (int j = 0; j < paraulaSecreta.length(); j++) {
+	                            if (paraulaSecreta.charAt(j) == letraAdivinada && palabraOculta[j] == '_') { // Verifica si donde hay el guion se a adivinado la letra o no
+	                                palabraOculta[j] = letraAdivinada;  // Si la letra es la que va en el guion se canvia el guion por la letra 
+	                                letraCorrecta = true;  // indica  que la letra es correcta
+	                            }
+	                        }
+
+	                        // Si la letra no es correcta, restamos una vida
+	                        if (!letraCorrecta) {
+	                            vides[i]--;  // Restamos una vida al jugador
+	                            System.out.println("¡Letra incorrecta! Te quedan " + vides[i] + " vidas."); // Printamos esto por pantalla
+	                        }
+	                    }
     		    
+	                }
+    		    }
+
      		}
 	}
-
 }
