@@ -145,7 +145,29 @@ public class El_juego_del_colgado {
     		    
 	                }
     		    }
+    		    
+    		 // Al final de la ronda, mostramos el estado de la palabra secreta
+	            System.out.print("Palabra secreta final: ");
+	            for (char letra : palabraOculta) {  // Mostramos la palabra completa
+	                System.out.print(letra + " ");
+	            }
+	            System.out.println();
+	        }
 
-     		}
+	        // Al final del juego, contamos las victoria i guardamos el nombre del jugador
+	        int maxVictorias = 0;
+	        String ganador = "";
+	        for (int i = 0; i < victorias.length; i++) {
+	            if (victorias[i] > maxVictorias) {
+	                maxVictorias = victorias[i];  // Actualizamos el máximo de victorias que tiene el jugador
+	                ganador = nomsJugadors[i];  // Guardamos el nombre del ganador para mostrarlo al print de avajo
+	            }
+	        }
+	        
+//	        Hacemos un print por pantalla del ganador y con cuantas victorias
+	        System.out.println("\nEl ganador del juego es: " + ganador + " con " + maxVictorias + " victorias.");  // Se imprime el nombre del ganador y su número de victorias
+
+	        sc.close();  // Cerramos el objeto Scanner
+
 	}
 }
