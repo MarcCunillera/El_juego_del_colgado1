@@ -49,6 +49,7 @@ public class El_juego_del_colgado {
      // Inicializamos arrays
         nomsJugadors = new String[cantJugadors];
         vides = new int[cantJugadors];
+        victorias = new int[cantJugadors];
 
         // Pedimos los nombres de los jugadores
         for (int i = 0; i < nomsJugadors.length; i++) { 
@@ -59,7 +60,9 @@ public class El_juego_del_colgado {
         // Mostramos los nombres de los jugadores
         System.out.println("Los jugadores son:"); 
         for (String jugadorNombre : nomsJugadors) { // Ponemos esto para que despues se printen los nombres por pantalla 
-            System.out.println(jugadorNombre);
+        	System.out.println("-----------------------------------");
+            System.out.println("- " + jugadorNombre + "      ");
+            System.out.println("-----------------------------------");
         }
 
         // Preguntamos cuántas rondas jugar
@@ -101,7 +104,9 @@ public class El_juego_del_colgado {
     		     // Preguntamos a cada jugador por una letra mientras tengas vidas disponibles
 	                for (int i = 0; i < nomsJugadors.length; i++) {
 	                    if (vides[i] > 0) {  // Si el jugador tiene vidas restantes se printea la la frase de avajo
+	                    	System.out.println("-----------------------------------------------------------------------------------------------");
 	                        System.out.println(nomsJugadors[i] + ", te quedan " + vides[i] + " vidas. Adivina una letra: ");
+	                        System.out.println("-----------------------------------------------------------------------------------------------");
 	                        char letraAdivinada = sc.next().charAt(0);  // almacenamos la letra adivinada 
 
 	                        // Verificamos si la letra está en la palabra secreta
@@ -116,7 +121,9 @@ public class El_juego_del_colgado {
 	                        // Si la letra no es correcta, restamos una vida
 	                        if (!letraCorrecta) {
 	                            vides[i]--;  // Restamos una vida al jugador
+	                            System.out.println("----------------------------------------------------------------------------------------------");
 	                            System.out.println("¡Letra incorrecta! Te quedan " + vides[i] + " vidas."); // Printamos esto por pantalla
+	                            System.out.println("----------------------------------------------------------------------------------------------");
 	                        }
 	                        
 	                     // Verificamos si todas las letras de la palabra fueron adivinados
@@ -131,13 +138,17 @@ public class El_juego_del_colgado {
 	                        // Si alguien adivina la palabra, terminamos la ronda
 	                        if (palabraAdivinada) {
 	                            victorias[i]++;  // Incrementamos la victoria del jugador que adivinó la palabra
+	                            System.out.println("---------------------------------------------------------------");
 	                            System.out.println(nomsJugadors[i] + " ha adivinado la palabra!");
+	                            System.out.println("---------------------------------------------------------------");
 	                            break;  // Terminamos el bucle de jugadores
 	                        }
 
 	                        // Si un jugador se queda sin intentos, le decimos que no adivinó la palabra y terminamos la ronda para ese jugador
 	                        if (vides[i] == 0) {
+	                        	System.out.println("-------------------------------------------------------------------------------------------");
 	                            System.out.println(nomsJugadors[i] + " no ha adivinado la palabra y ha agotado sus intentos.");
+	                            System.out.println("-------------------------------------------------------------------------------------------");
 	                            palabraAdivinada = true;  // Finalizamos la ronda
 	                            break;  // Terminamos el bucle de jugadores
 	                        }
@@ -152,7 +163,7 @@ public class El_juego_del_colgado {
 	                System.out.print(letra + " ");
 	            }
 	            System.out.println();
-	        }
+	        } 
 
 	        // Al final del juego, contamos las victoria i guardamos el nombre del jugador
 	        int maxVictorias = 0;
@@ -166,7 +177,6 @@ public class El_juego_del_colgado {
 	        
 //	        Hacemos un print por pantalla del ganador y con cuantas victorias
 	        System.out.println("\nEl ganador del juego es: " + ganador + " con " + maxVictorias + " victorias.");  // Se imprime el nombre del ganador y su número de victorias
-
 	        sc.close();  // Cerramos el objeto Scanner
 
 	}
